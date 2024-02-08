@@ -19,5 +19,14 @@ def create_table_users():
     conn.commit()
 
 
+def create_table_weights():
+    cur.execute("""CREATE TABLE IF NOT EXISTS weights(
+            user_id INT NOT NULL,
+            actual_weight INT NOT NULL,
+            CONSTRAINT PK_weights PRIMARY KEY (user_id))""")
+    conn.commit()
+
+
 def create_tables():
     create_table_users()
+    create_table_weights()

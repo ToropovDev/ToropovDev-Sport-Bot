@@ -11,10 +11,13 @@ def add_user(user_data: dict[str, any]) -> None:
                 " :first_name,"
                 " :last_name,"
                 " :phone_number,"
-                " :age, :height,"
+                " :age,"
+                " :height,"
                 " :weight,"
                 " :goal)",
                 user_data)
+    cur.execute(f"INSERT INTO weights VALUES({user_data['user_id']},"
+                f"{user_data['weight']})")
     conn.commit()
 
 
