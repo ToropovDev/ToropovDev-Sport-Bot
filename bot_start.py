@@ -5,9 +5,10 @@ from aiogram import types
 from config.bot_conf import *
 from keyboards import keyboards as kb
 from db_functions.create_tables import create_tables
+from db_functions.weights import *
 from functions.reg import *
 from functions.menu import *
-from functions.weight_tracking import *
+from functions.track_weight import *
 
 
 @dp.message(Command('start'))
@@ -23,6 +24,10 @@ async def cmd_start(message: types.Message):
 async def bot_start():
     create_tables()
     dp.include_router(reg_router)
+
+    sched.start()
+    sched.add_job(add_date, "cron", hour=0, minute=1)
+
     await dp.start_polling(bot)
 
 

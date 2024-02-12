@@ -2,6 +2,7 @@ from aiogram import F
 from aiogram import types
 from config.bot_conf import *
 from keyboards import keyboards as kb
+from db_functions.weights import add_date
 
 
 @dp.callback_query(F.data == "to_main_menu")

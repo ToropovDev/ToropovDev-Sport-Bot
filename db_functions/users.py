@@ -17,7 +17,7 @@ def add_user(user_data: dict[str, any]) -> None:
                 " :goal)",
                 user_data)
     cur.execute(f"INSERT INTO weights VALUES({user_data['user_id']},"
-                f"{user_data['weight']})")
+                f"{user_data['weight']}, 10)")
     conn.commit()
 
 
@@ -28,3 +28,4 @@ def check_exist_user(user_id: int) -> bool:
         if user[0] == user_id:
             return True
     return False
+

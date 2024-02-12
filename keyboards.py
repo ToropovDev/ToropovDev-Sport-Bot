@@ -25,9 +25,14 @@ main_menu_kb = InlineKeyboardMarkup(inline_keyboard=[[workouts_btn],
                                                      [calculs_btn, measurements_btn],
                                                      [edit_user_btn]])
 
+add_today_weight_btn = InlineKeyboardButton(text="Добавить измерение", callback_data="add_today_weight")
+check_graph_btn = InlineKeyboardButton(text="Посмотреть прогресс", callback_data="check_graph")
+track_weight_kb = InlineKeyboardMarkup(inline_keyboard=[[add_today_weight_btn], [check_graph_btn]])
+
 keyboards = {"start": start_kb,
              "contact": contact_kb,
              "goal": goal_kb,
              "to_main_menu": to_main_menu_kb,
-             "main_menu": main_menu_kb}
+             "main_menu": main_menu_kb,
+             "track_weight": track_weight_kb}
 
