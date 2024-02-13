@@ -16,8 +16,8 @@ def add_user(user_data: dict[str, any]) -> None:
                 " :weight,"
                 " :goal)",
                 user_data)
-    cur.execute(f"INSERT INTO weights VALUES({user_data['user_id']},"
-                f"{user_data['weight']}, 10)")
+    cur.execute(f"INSERT INTO weights (user_id, actual_weight) VALUES({user_data['user_id']},"
+                f"{user_data['weight']})")
     conn.commit()
 
 

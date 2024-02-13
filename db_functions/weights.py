@@ -13,9 +13,13 @@ def get_user_weights(user_id):
     return weights
 
 
-async def add_date():
+def add_weight(user_id, new_weight):
     today = str(date.today()).replace('-', '_')
-    cur.execute(f"ALTER TABLE weights ADD COLUMN d_{today}")
+    cur.execute(f"UPDATE weights SET day_{today}={new_weight} WHERE user_id={user_id};")
+    cur.execute(f"UPDATE weights SET actual_weight={new_weight} WHERE user_id={user_id};")
     conn.commit()
+
+
+
 
 

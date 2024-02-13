@@ -5,7 +5,7 @@ from aiogram import Router
 from config.bot_conf import *
 from keyboards import keyboards as kb
 from functions.states import RegStatesGroup
-from db_functions.users import add_user, check_exist_user
+from db_functions.users import add_user
 
 reg_router = Router()
 

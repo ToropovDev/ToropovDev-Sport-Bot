@@ -9,6 +9,8 @@ from db_functions.weights import *
 from functions.reg import *
 from functions.menu import *
 from functions.track_weight import *
+from bg_workers.db_worker import *
+from db_functions.users import check_exist_user
 
 
 @dp.message(Command('start'))
@@ -21,13 +23,17 @@ async def cmd_start(message: types.Message):
                         reply_markup=kb['start'])
 
 
-async def bot_start():
-    create_tables()
-    dp.include_router(reg_router)
-
+def sched_start():
     sched.start()
+    sched.add_job(add_yesterday_weight, "cron", hour=23, minute=59)
     sched.add_job(add_date, "cron", hour=0, minute=1)
 
+
+async def bot_start():
+    create_tables()
+    sched_start()
+    dp.include_router(reg_router)
+    dp.include_router(add_weight_router)
     await dp.start_polling(bot)
 
 

@@ -23,7 +23,6 @@ def create_table_weights():
     cur.execute("""CREATE TABLE IF NOT EXISTS weights(
             user_id INT NOT NULL,
             actual_weight INT NOT NULL,
-            day_08_02_24 INT,
             CONSTRAINT PK_weights PRIMARY KEY (user_id))""")
     conn.commit()
 

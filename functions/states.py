@@ -7,5 +7,8 @@ class RegStatesGroup(StatesGroup):
     waiting_for_height = State()
     waiting_for_weight = State()
     waiting_for_goal = State()
-    ending = State()
 
+
+class AddWeightStatesGroup(StatesGroup):
+    waiting_for_weight = State()
+    ending = State()
