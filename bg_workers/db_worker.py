@@ -4,9 +4,11 @@ from datetime import date
 
 async def add_date():
     today = str(date.today()).replace('-', '_')
-    cur.execute(f"ALTER TABLE weights ADD COLUMN d_{today};")
+    cur.execute(f"ALTER TABLE weights ADD COLUMN day_{today};")
     conn.commit()
 
 
 async def add_yesterday_weight():
-    pass
+    today = str(date.today()).replace('-', '_')
+    cur.execute(f"UPDATE weights SET day_{today}=actual_weight WHERE day_{today} IS NULL;")
+    conn.commit()

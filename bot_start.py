@@ -16,10 +16,10 @@ from db_functions.users import check_exist_user
 @dp.message(Command('start'))
 async def cmd_start(message: types.Message):
     if check_exist_user(message.from_user.id):
-        await message.answer(f"""Привет, {message.from_user.first_name}!""",
+        await message.answer(f"Привет, {message.from_user.first_name}!",
                              reply_markup=kb['to_main_menu'])
         return
-    await message.reply(f"""Привет, {message.from_user.first_name}!""",
+    await message.reply(f"Привет, {message.from_user.first_name}!",
                         reply_markup=kb['start'])
 
 

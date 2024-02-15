@@ -1,3 +1,4 @@
+import os
 from aiogram import F
 from aiogram import types
 from config.bot_conf import *
@@ -25,6 +26,7 @@ async def weight_graph(call: types.CallbackQuery):
     plt.savefig(f"files/{user_id}.png")
     plot = types.FSInputFile(f"files/{user_id}.png")
     await bot.send_photo(chat_id=user_id, photo=plot, caption="График вашего веса")
+    os.remove(f"files/{user_id}.png")
     await call.answer()
 
 

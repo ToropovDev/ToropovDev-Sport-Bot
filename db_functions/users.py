@@ -1,4 +1,6 @@
 from db_functions.create_tables import cur, conn
+from datetime import date
+from bg_workers.db_worker import *
 
 
 def add_user(user_data: dict[str, any]) -> None:
@@ -16,8 +18,9 @@ def add_user(user_data: dict[str, any]) -> None:
                 " :weight,"
                 " :goal)",
                 user_data)
-    cur.execute(f"INSERT INTO weights (user_id, actual_weight) VALUES({user_data['user_id']},"
-                f"{user_data['weight']})")
+    today = str(date.today()).replace('-', '_')
+    cur.execute(f"INSERT INTO weights (user_id, actual_weight, day_{today}) VALUES({user_data['user_id']},"
+                f"{user_data['weight']}, NULL);")
     conn.commit()
 
 
