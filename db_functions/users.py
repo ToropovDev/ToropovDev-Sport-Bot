@@ -20,7 +20,7 @@ def add_user(user_data: dict[str, any]) -> None:
                 user_data)
     today = str(date.today()).replace('-', '_')
     cur.execute(f"INSERT INTO weights (user_id, actual_weight, day_{today}) VALUES({user_data['user_id']},"
-                f"{user_data['weight']}, NULL);")
+                f"{user_data['weight']}, {user_data['weight']});")
     conn.commit()
 
 
