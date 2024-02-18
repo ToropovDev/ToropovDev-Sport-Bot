@@ -1,8 +1,5 @@
-import sqlite3
-
 from db_functions.create_tables import cur, conn
 from datetime import date
-from config.bot_conf import logging
 
 
 async def add_date():

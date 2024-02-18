@@ -11,6 +11,7 @@ from functions.menu import *
 from functions.track_weight import *
 from bg_workers.db_worker import *
 from db_functions.users import check_exist_user
+from db_functions.exercises import *
 
 
 @dp.message(Command('start'))
@@ -35,6 +36,7 @@ async def bot_start():
     sched_start()
     dp.include_router(reg_router)
     dp.include_router(add_weight_router)
+    add_exercises()
     await dp.start_polling(bot)
 
 

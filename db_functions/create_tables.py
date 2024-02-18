@@ -27,6 +27,20 @@ def create_table_weights():
     conn.commit()
 
 
+def create_table_exercises():
+    cur.execute("""CREATE TABLE IF NOT EXISTS exercises(
+            exercise_id INT ROWID,
+            name TEXT NOT NULL,
+            muscle_group TEXT NOT NULL,
+            by_time INT NOT NULL,
+            by_repeats INT NOT NULL,
+            by_weight INT NOT NULL,
+            instruction TEXT NOT NULL,
+            CONSTRAINT PK_exercises PRIMARY KEY  (exercise_id))""")
+    conn.commit()
+
+
 def create_tables():
     create_table_users()
     create_table_weights()
+    create_table_exercises()
