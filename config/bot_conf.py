@@ -5,7 +5,7 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
 logging.basicConfig(level=logging.DEBUG)
 
-TOKEN = "6673453076:AAE-gIEpOi14q55DumXAqDfssKPHQ4ExwdU"
+TOKEN = ""
 bot = Bot(token=TOKEN, parse_mode="HTML")
 
 dp = Dispatcher()
